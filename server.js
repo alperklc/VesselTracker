@@ -24,7 +24,9 @@ var server = http.createServer(app);
 app.set('port', process.env.PORT || 3000);
 
 // connection to the database
-mongoose.connect('localhost:27017/gemiNerede');
+//mongoose.connect('localhost:27017/gemiNerede');
+var mongo_url = process.env.OPENSHIFT_MONGODB_DB_URL;
+mongoose.connect(mongo_url);
 
 var vess = require('./routes/vessel');
 app.use('/api/vessel', vess);
@@ -129,7 +131,11 @@ sockets.sockets.on('connection', function(socket) {
     }, minutes * 60 * 1000);
 
 
-//Create the server
-server.listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
+
+// START THE SERVER!
+var server_port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
+var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
+
+server.listen(server_port, server_ip_address, function () {
+  console.log( "Listening on " + server_ip_address + ", port " + server_port );
 });

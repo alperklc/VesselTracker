@@ -1,20 +1,10 @@
 {
   "name": "gemi-nerede",
   "version": "1.0.0",
-  "description": "nodejs based ship tracking web-app ",
-  "main": "server.js",
+  "private": true,
   "scripts": {
     "test": "node ./bin/public"
   },
-
-  "keywords": [
-    "marine",
-    "data",
-    "socket",
-    "web-scrapping"
-  ],
-  "author": "alper k.",
-  "license": "ISC",
   "dependencies" :{
     "request": "2.72.0",
     "body-parser": "~1.13.2",
@@ -27,10 +17,8 @@
     "socket.io": "1.4.8"
   },
   "scripts": {
-  "start": "node server.js"
-},
-"main": "server.js"
-
-
+    "start": "node server.js"
+  },
+  "main": "server.js"
 }
-.
+
